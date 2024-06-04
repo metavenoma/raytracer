@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../includes/Environment.hpp
+raytracer.h
+../includes/raytracer.h
+
+../includes/Projectile.hpp
+raytracer.h
+../includes/raytracer.h
+
+../includes/Tuple.hpp
+
+../includes/raytracer.h
+iostream
+-
+cmath
+-
+GLFW/glfw3.h
+-
+Tuple.hpp
+../includes/Tuple.hpp
+Projectile.hpp
+../includes/Projectile.hpp
+Environment.hpp
+../includes/Environment.hpp
+
+/nfs/homes/rverona-/metavery/CPP/raytracer/sources/Tuple.cpp
+raytracer.h
+/nfs/homes/rverona-/metavery/CPP/raytracer/sources/raytracer.h
+

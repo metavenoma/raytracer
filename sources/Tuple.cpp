@@ -14,11 +14,11 @@
 /*                                                             ╚═╝╚══════╝     */
 /*☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆*/
 
-#include "Tuple.hpp"
+#include "raytracer.h"
 
 Tuple::Tuple(void) : _x(0), _y(0), _z(0), _w(0) {}
 
-Tuple::Tuple(double x, double y, double z, double w) : _x(x), _y(y), _z(z), _w(w) {}
+Tuple::Tuple(float x, float y, float z, float w) : _x(x), _y(y), _z(z), _w(w) {}
 
 Tuple::Tuple(const Tuple &t) : _x(t._x), _y(t._y), _z(t._z), _w(t._w) {}
 
@@ -51,42 +51,86 @@ Tuple	Tuple::operator-(void)
 	return (Tuple(-_x, -_y, -_z, -_w));
 }
 
-Tuple	Tuple::operator*(double scalar)
+Tuple	Tuple::operator*(float scalar)
 {
 	return (Tuple(_x * scalar, _y * scalar, _z * scalar, _w * scalar));
 }
 
-Tuple	Tuple::operator/(double scalar)
+Tuple	Tuple::operator/(float scalar)
 {
 	return (Tuple(_x / scalar, _y / scalar, _z / scalar, _w / scalar));
 }
 
-double	Tuple::getX(void)
+float	Tuple::x(void) const
 {
 	return (_x);
 }
 
-double	Tuple::getY(void)
+float	Tuple::y(void) const
 {
 	return (_y);
 }
 
-double	Tuple::getZ(void)
+float	Tuple::z(void) const
 {
 	return (_z);
 }
 
-double	Tuple::getW(void)
+float	Tuple::w(void) const
 {
 	return (_w);
 }
 
-Tuple	Tuple::point(double x, double y, double z)
+Tuple	Tuple::point(float x, float y, float z)
 {
 	return (Tuple(x, y, z, 1));
 }
 
-Tuple	Tuple::vector(double x, double y, double z)
+Tuple	Tuple::vector(float x, float y, float z)
 {
 	return (Tuple(x, y, z, 0));
+}
+
+bool	Tuple::isPoint(void) const
+{
+	return (equal(1.0, _w));
+}
+
+bool	Tuple::isVector(void) const
+{
+	return (equal(0.0, _w));
+}
+
+float	Tuple::magnitude(void) const
+{
+	return (std::sqrt(this->x() * this->x() + this->y() * this->y()
+				+ this->z() * this->z() + this->w() * this->w()));
+}
+
+Tuple	Tuple::normalized(void) const
+{
+	float	mag = this->magnitude();
+	return (Tuple(this->x() / mag, this->y() / mag, \
+			this->z() / mag, this->w() / mag));
+}
+
+float	Tuple::dot(Tuple other) const
+{
+	return (this->x() * other.x() + this->y() * other.y()
+		+ this->z() * other.z() + this->w() * other.w());
+}
+
+Tuple	Tuple::cross(Tuple other) const
+{
+	return (Tuple(this->y() * other.z() - this->z() * other.y(), \
+			this->z() * other.x() - this->x() * other.z(), \
+			this->x() * other.y() - this->y() * other.x(), 0));
+}
+
+std::ostream &operator<<(std::ostream &out, const Tuple &tuple)
+{
+	out << "(x: " << tuple.x() << ", y: " << tuple.y() \
+		<< ", z: " << tuple.z() << ", w: " << tuple.w() \
+		<< ")" << std::endl;
+	return (out);
 }

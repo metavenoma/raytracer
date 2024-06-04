@@ -17,14 +17,27 @@
 #pragma once
 
 #define EPSILON 0.00001
+#define WIDTH 800
+#define HEIGHT 600
 
 #include <iostream>
 #include <cmath>
+#include <GLFW/glfw3.h>
+#include <cassert>
+#include <fstream>
+#include <string>
 
 #include "Tuple.hpp"
+#include "Color.hpp"
+#include "Canvas.hpp"
+#include "Projectile.hpp"
+#include "Environment.hpp"
 
-bool	equal(double a, double b);
-double	magnitude(Tuple &t);
-Tuple	normalize(Tuple &v);
-double	dot(Tuple &v1, Tuple &v2);
-Tuple	cross(Tuple &v1, Tuple &v2);
+bool		equal(float a, float b);
+/*float		magnitude(Tuple &t);
+Tuple		normalize(Tuple &v);
+float		dot(Tuple &v1, Tuple &v2);
+Tuple		cross(Tuple &v1, Tuple &v2);*/
+Projectile	tick(Projectile proj, Environment env);
+Color		hadamardProduct(Color c1, Color c2);
+void		canvasToPpm(Canvas c);
