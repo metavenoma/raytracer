@@ -15,7 +15,7 @@ OBJ_PATH = ../objects/
 INC = -I ../includes
 
 SRC = main.cpp ../sources/Color.cpp ../sources/Tuple.cpp 
-SRC += ../sources/Utils.cpp ../sources/Canvas.cpp
+SRC += ../sources/Utils.cpp ../sources/Canvas.cpp ../sources/Matrix.cpp
 
 OBJ = $(addprefix $(OBJ_PATH), $(SRC:.cpp=.o))
 

@@ -7,70 +7,35 @@
 /*                                    |___/                                    */
 /*                                                                             */
 /*                                                        ██╗  ██╗██████╗      */
-/*          Canvas.cpp                                    ██║  ██║╚════██╗     */
+/*          Matrix.hpp                                    ██║  ██║╚════██╗     */
 /*   Created by rverona-                                  ███████║ █████╔╝     */
-/*   Date: 2024-06-04                                     ╚════██║██╔═══╝      */
+/*   Date: 2024-06-05                                     ╚════██║██╔═══╝      */
 /*                                                             ██║███████╗     */
 /*                                                             ╚═╝╚══════╝     */
 /*☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆☆*/
 
+#pragma once
+
 #include "raytracer.h"
 
-Canvas::Canvas(int w, int h) : _width(w), _height(h)
+class Matrix
 {
-	_data = (int*)calloc(sizeof(int), _width * _height * 3);
-}
+	private:
+		float	**_matrix;
+		int	_size;
+	public:
+		Matrix(void);
+		Matrix(int size);
 
-Canvas::~Canvas(void) {}
+		~Matrix(void);
 
-int	Canvas::width(void)
-{
-	return (_width);
-}
+		bool	operator==(const Matrix &m);
+		bool	operator!=(const Matrix &m);
+		const Matrix	operator*(const Matrix &m);
+		float	operator()(const int &row, const int &col) const;
 
-int	Canvas::height(void)
-{
-	return (_height);
-}
-
-int	*Canvas::data(void)
-{
-	return (_data);
-}
-
-int	Canvas::pixelIndex(int x, int y)
-{
-	assert(x >= 0);
-	//assert(x < _width);
-	assert(y >= 0);
-	//assert(y < _height);
-
-	return ((x + y * _width));
-}
-
-Color	Canvas::pixelAt(int x, int y)
-{
-	int index = pixelIndex(x, y);
-	float r = (float)_data[index++];
-	float g = (float)_data[index++];
-	float b = (float)_data[index++];
-
-	return (Color(r, g, b));
-}
-
-int	Canvas::getIntValue(float f)
-{
-	if (f < 0.0)
-		f = 0.0;
-	else if (f > 1.0)
-		f = 1.0;
-	return ((int)(f * 255.0));
-}
-
-void	Canvas::writePixel(Color c, int x, int y)
-{
-	int	index = pixelIndex(x, y);
-	_data[index++] = getIntValue(c.r());
-	_data[index++] = getIntValue(c.g());
-	_data[index++] = getIntValue(c.b());
-}
+		float **getMatrix(void) const;
+		int	getSize(void) const;
+		void	set(float value, int rol, int col);
+};
+std::ostream &operator<<(std::ostream &out, const Matrix &m);

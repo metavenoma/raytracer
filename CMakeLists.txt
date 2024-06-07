@@ -12,6 +12,7 @@ add_executable(raytracer
 	sources/main.cpp
 	sources/Tuple.cpp
 	sources/Utils.cpp
+	sources/Matrix.cpp
 )
 
 # Link against GLFW

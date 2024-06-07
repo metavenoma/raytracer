@@ -29,6 +29,7 @@
 
 #include "Tuple.hpp"
 #include "Color.hpp"
+#include "Matrix.hpp"
 #include "Canvas.hpp"
 #include "Projectile.hpp"
 #include "Environment.hpp"

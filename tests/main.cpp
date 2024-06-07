@@ -29,7 +29,7 @@ int	main(void)
 
 	std::cout << hp;
 
-	Canvas	canvas = Canvas(900, 550);
+	/*Canvas	canvas = Canvas(900, 550);
 	Color	red = Color(1, 0, 0);
 	Tuple start = Tuple::point(0, 1, 0);
 	Tuple vel = Tuple::vector(1, 1.8, 0);
@@ -43,5 +43,21 @@ int	main(void)
 		canvas.writePixel(red, 900 - p._position.x(), 550 - p._position.y());
 		p = tick(p, e);
 	}
-	canvasToPpm(canvas);
+	canvasToPpm(canvas);*/
+	Matrix	m = Matrix(4);
+	Matrix	m1 = Matrix(3);
+	Matrix	m2 = Matrix(4);
+	Matrix	m3 = Matrix(5);
+	std::cout << m << m1 << m2 << m3;
+	Matrix m4 = Matrix(2);
+	if (m == m4)
+		std::cout << "m == m4" << std::endl;
+	else
+		std::cout << "m != m4" << std::endl;
+	if (m != m1)
+		std::cout << "m != m1" << std::endl;
+	else	
+		std::cout << "m == m1" << std::endl;
+	Matrix m5 = m * m2;
+	std::cout << m5 << std::endl;
 }
