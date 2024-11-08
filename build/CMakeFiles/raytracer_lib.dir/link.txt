@@ -1,0 +1,2 @@
+/usr/bin/ar qc libraytracer_lib.a CMakeFiles/raytracer_lib.dir/sources/Tuple.cpp.o CMakeFiles/raytracer_lib.dir/sources/Matrix.cpp.o CMakeFiles/raytracer_lib.dir/sources/Color.cpp.o CMakeFiles/raytracer_lib.dir/sources/Canvas.cpp.o CMakeFiles/raytracer_lib.dir/sources/utils/tick.cpp.o CMakeFiles/raytracer_lib.dir/sources/utils/hadamardProduct.cpp.o CMakeFiles/raytracer_lib.dir/sources/utils/equal.cpp.o CMakeFiles/raytracer_lib.dir/sources/utils/canvasToPpm.cpp.o
+/usr/bin/ranlib libraytracer_lib.a

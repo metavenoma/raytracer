@@ -28,11 +28,13 @@ class Matrix
 		Matrix(int size);
 
 		~Matrix(void);
-
-		bool	operator==(const Matrix &m);
+		
+		Matrix	&operator=(const Matrix &m);
+		bool	operator==(const Matrix &m) const;
 		bool	operator!=(const Matrix &m);
-		const Matrix	operator*(const Matrix &m);
+		const	Matrix	operator*(const Matrix &m) const;
 		float	operator()(const int &row, const int &col) const;
+		Tuple	operator*(const Tuple &t) const;
 
 		float **getMatrix(void) const;
 		int	getSize(void) const;

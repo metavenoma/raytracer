@@ -26,6 +26,7 @@
 #include <cassert>
 #include <fstream>
 #include <string>
+#include <cstring>
 
 #include "Tuple.hpp"
 #include "Color.hpp"
@@ -39,6 +40,6 @@ bool		equal(float a, float b);
 Tuple		normalize(Tuple &v);
 float		dot(Tuple &v1, Tuple &v2);
 Tuple		cross(Tuple &v1, Tuple &v2);*/
-Projectile	tick(Projectile proj, Environment env);
+Projectile	tick(const Projectile &proj, const Environment &env);
 Color		hadamardProduct(Color c1, Color c2);
 void		canvasToPpm(Canvas c);

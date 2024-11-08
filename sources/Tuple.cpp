@@ -36,27 +36,32 @@ Tuple &Tuple::operator=(const Tuple &t)
 	return (*this);
 }
 
-Tuple	Tuple::operator+(const Tuple &t)
+bool	Tuple::operator==(const Tuple &t) const
+{
+	return (equal(_x, t.x()) && equal(_y, t.y()) && equal(_z, t.z()) && equal(_w, t.w()));
+}
+
+Tuple	Tuple::operator+(const Tuple &t) const
 {
 	return (Tuple(t._x + _x, t._y + _y, t._z + _z, t._w + _w));
 }
 
-Tuple	Tuple::operator-(const Tuple &t)
+Tuple	Tuple::operator-(const Tuple &t) const
 {
 	return (Tuple(_x - t._x, _y - t._y, _z - t._z, _w - t._w));
 }
 
-Tuple	Tuple::operator-(void)
+Tuple	Tuple::operator-(void) const
 {
 	return (Tuple(-_x, -_y, -_z, -_w));
 }
 
-Tuple	Tuple::operator*(float scalar)
+Tuple	Tuple::operator*(float scalar) const
 {
 	return (Tuple(_x * scalar, _y * scalar, _z * scalar, _w * scalar));
 }
 
-Tuple	Tuple::operator/(float scalar)
+Tuple	Tuple::operator/(float scalar) const
 {
 	return (Tuple(_x / scalar, _y / scalar, _z / scalar, _w / scalar));
 }

@@ -65,7 +65,30 @@ void	Matrix::set(float value, int rol, int col)
 	_matrix[rol][col] = value;
 }
 
-bool	Matrix::operator==(const Matrix &m)
+Matrix	&Matrix::operator=(const Matrix &m)
+{
+	if (this != &m)
+	{
+		if (this->_size != m._size)
+		{
+			_size = m._size;
+			free(_matrix);
+			 _matrix = new float*[_size];
+	    	for (int i = 0; i < _size; i++)
+    	   		_matrix[i] = new float[_size];
+		}
+		for (int i = 0; i < m._size; i++)
+		{
+			for (int j = 0; j < m._size; j++)
+			{
+				_matrix[i][j] = m._matrix[i][j];
+			}
+		}
+	}
+	return (*this);
+}
+
+bool	Matrix::operator==(const Matrix &m) const
 {
 	if (this->_size != m._size)
 		return (false);
@@ -100,29 +123,33 @@ float	Matrix::operator()(const int &row, const int &col) const
 	return (_matrix[row][col]);
 }
 
-const Matrix	Matrix::operator*(const Matrix &m)
+const	Matrix Matrix::operator*(const Matrix &m) const 
 {
-	std::cout << "hi";
-	if (this->_size != m.getSize())
-	{
-		std::cerr << "Matrices are different sizes" << std::endl;
-		return (m);
-	}
-	Matrix	res = Matrix(m.getSize());
-	float	value;
-	for (int i = 0; i < m.getSize(); i++)
-	{
-		for (int j = 0; j < m.getSize(); j++)
-		{
-			value = 0.0;
-			std::cout << value;
-			for (int k = 0; k < m._size; k++)
-				value += this->_matrix[i][k] * m(k, j);
-			std::cout << value;
-			res.set(value, i, j);
-		}
-	}
-	return (res);
+    if (_size != m.getSize()) {
+        throw std::invalid_argument("Matrix sizes must match for multiplication.");
+    }
+
+    Matrix result(_size);
+
+    for (int i = 0; i < _size; ++i) {
+        for (int j = 0; j < _size; ++j) {
+            float sum = 0;
+            for (int k = 0; k < _size; ++k) {
+                sum += _matrix[i][k] * m(k, j);
+            }
+            result.set(sum, i, j);
+        }
+    }
+    return result;
+}
+
+Tuple   Matrix::operator*(const Tuple &t) const
+{
+	return Tuple(
+			_matrix[0][0] * t.x() + _matrix[0][1] * t.y() + _matrix[0][2] * t.z() + _matrix[0][3] * t.w(),
+			_matrix[1][0] * t.x() + _matrix[1][1] * t.y() + _matrix[1][2] * t.z() + _matrix[1][3] * t.w(),
+			_matrix[2][0] * t.x() + _matrix[2][1] * t.y() + _matrix[2][2] * t.z() + _matrix[2][3] * t.w(),
+			_matrix[3][0] * t.x() + _matrix[3][1] * t.y() + _matrix[3][2] * t.z() + _matrix[3][3] * t.w());
 }
 
 std::ostream &operator<<(std::ostream &out, const Matrix &m)

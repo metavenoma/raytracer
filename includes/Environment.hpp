@@ -23,10 +23,7 @@ class Environment
 		Tuple	_gravity;
 		Tuple	_wind;
 
-		Environment(Tuple grav, Tuple wind) {
-			_gravity = grav;
-			_wind = wind;
-		}
+		Environment(const Tuple &g, const Tuple &w): _gravity(g), _wind(w) {}
 
 		~Environment(void) {}
 };

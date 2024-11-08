@@ -21,17 +21,17 @@
 class Canvas
 {
 	private:
-		int	_width;
-		int	_height;
-		int	*_data;
+		int		_width;
+		int		_height;
+		float	*_data;
 	public:
 		Canvas(int w, int h);
 		
 		~Canvas(void);
 
-		int	width(void);
-		int	height(void);
-		int	*data(void);
+		int		width(void);
+		int		height(void);
+		float	*data(void);
 
 		void	writePixel(Color c, int x, int y);
 		Color	pixelAt(int x, int y);

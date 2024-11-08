@@ -31,11 +31,12 @@ class Tuple
 		~Tuple(void);
 
 		Tuple	&operator=(const Tuple &t);
-		Tuple	operator+(const Tuple &t);
-		Tuple	operator-(const Tuple &t);
-		Tuple	operator-(void);
-		Tuple	operator*(float scalar);
-		Tuple	operator/(float scalar);
+		bool	operator==(const Tuple &t) const;
+		Tuple	operator+(const Tuple &t) const;
+		Tuple	operator-(const Tuple &t) const;
+		Tuple	operator-(void) const;
+		Tuple	operator*(float scalar) const;
+		Tuple	operator/(float scalar) const;
 
 		static Tuple point(float x, float y, float z);
 		static Tuple vector(float x, float y, float z);

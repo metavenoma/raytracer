@@ -24,10 +24,7 @@ class Projectile
 		Tuple _position;
 		Tuple _velocity;
 
-		Projectile(Tuple &pos, Tuple &vel) {
-			_position = pos;
-			_velocity = vel;
-		}
+		Projectile(const Tuple &p, const Tuple &v): _position(p), _velocity(v) {}
 
 		~Projectile(void) {}
 };

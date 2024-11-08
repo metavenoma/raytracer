@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/tests.dir/tests/testCanvas.cpp.o CMakeFiles/tests.dir/tests/testColor.cpp.o CMakeFiles/tests.dir/tests/testMatrix.cpp.o CMakeFiles/tests.dir/tests/testTuple.cpp.o -o tests  lib/libgtest.a lib/libgtest_main.a libraytracer_lib.a lib/libgtest.a /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGL.so 

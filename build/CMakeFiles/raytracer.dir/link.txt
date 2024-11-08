@@ -1,1 +1,1 @@
-/usr/bin/c++     CMakeFiles/raytracer.dir/sources/main.cpp.o CMakeFiles/raytracer.dir/sources/Tuple.cpp.o CMakeFiles/raytracer.dir/sources/Utils.cpp.o  -o raytracer  /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 
+/usr/bin/c++ CMakeFiles/raytracer.dir/sources/main.cpp.o -o raytracer  libraytracer_lib.a /usr/lib/x86_64-linux-gnu/libglfw.so.3.3 /usr/lib/x86_64-linux-gnu/libGL.so 

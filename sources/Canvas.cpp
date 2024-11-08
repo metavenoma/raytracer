@@ -18,7 +18,7 @@
 
 Canvas::Canvas(int w, int h) : _width(w), _height(h)
 {
-	_data = (int*)calloc(sizeof(int), _width * _height * 3);
+	_data = (float*)calloc(sizeof(float), _width * _height * 3);
 }
 
 Canvas::~Canvas(void) {}
@@ -33,7 +33,7 @@ int	Canvas::height(void)
 	return (_height);
 }
 
-int	*Canvas::data(void)
+float	*Canvas::data(void)
 {
 	return (_data);
 }
@@ -51,9 +51,9 @@ int	Canvas::pixelIndex(int x, int y)
 Color	Canvas::pixelAt(int x, int y)
 {
 	int index = pixelIndex(x, y);
-	float r = (float)_data[index++];
-	float g = (float)_data[index++];
-	float b = (float)_data[index++];
+	float r = _data[index++];
+	float g = _data[index++];
+	float b = _data[index++];
 
 	return (Color(r, g, b));
 }
@@ -70,7 +70,7 @@ int	Canvas::getIntValue(float f)
 void	Canvas::writePixel(Color c, int x, int y)
 {
 	int	index = pixelIndex(x, y);
-	_data[index++] = getIntValue(c.r());
-	_data[index++] = getIntValue(c.g());
-	_data[index++] = getIntValue(c.b());
+	_data[index++] = c.r();
+	_data[index++] = c.g();
+	_data[index++] = c.b();
 }

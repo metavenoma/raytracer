@@ -21,32 +21,7 @@ bool	equal(float a, float b)
 	return ((std::fabs(a - b) < EPSILON) ? true : false);
 }
 
-/*float	magnitude(Tuple &t)
-{
-	return(std::sqrt(t.x() * t.x() + t.y() * t.y()
-				+ t.z() * t.z() + t.w() * t.w()));
-}
-
-Tuple	normalize(Tuple &v)
-{
-	return (Tuple(v.x() / magnitude(v), v.y() / magnitude(v), \
-				v.z() / magnitude(v), v.w() / magnitude(v)));
-}
-
-float	dot(Tuple &v1, Tuple &v2)
-{
-	return (v1.x() * v2.x() + v1.y() * v2.y()
-			+ v1.z() * v2.z() + v1.w() * v2.w());
-}
-
-Tuple	cross(Tuple &v1, Tuple &v2)
-{
-	return(Tuple(v1.y() * v2.z() - v1.z() * v2.y(), \
-			v1.z() * v2.x() - v1.x() * v2.z(), \
-			v1.x() * v2.y() - v1.y() * v2.x(), 0));
-}*/
-
-Projectile	tick(Projectile proj, Environment env)
+Projectile	tick(const Projectile &proj, const Environment &env)
 {
 	Tuple position = proj._position + proj._velocity;
 	Tuple velocity = proj._velocity + env._gravity + env._wind;
